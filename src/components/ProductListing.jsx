@@ -14,6 +14,7 @@ import {
   Button,
   CircularProgress,
   Box,
+  CardMedia,
 } from "@mui/material";
 
 const ProductListing = () => {
@@ -122,6 +123,14 @@ const ProductListing = () => {
             {products.map((product) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
                 <Card>
+                  {/* Display product image */}
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={product.images[0]} // Display the first image
+                    alt={product.title}
+                    style={{ objectFit: "cover" }}
+                  />
                   <CardContent>
                     <Typography variant="h6">{product.title}</Typography>
                     <Typography variant="body2" color="textSecondary">
