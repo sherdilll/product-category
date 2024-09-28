@@ -1,14 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProductListing from "./components/ProductListing";
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" component={ProductListing} />
-      </Switch>
-    </Router>
+    <div>
+      <h1>Product Listing App</h1>
+      <Routes>
+        <Route path="/" element={<ProductListing />} />
+      </Routes>
+    </div>
   );
 };
 

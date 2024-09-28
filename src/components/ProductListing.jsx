@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories, fetchProducts } from "../store/actions";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Container,
   Grid,
@@ -26,7 +26,7 @@ const ProductListing = () => {
   const [limit] = useState(10); // Items per batch
   const [skip, setSkip] = useState(0);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
 
   // Parsing URL query params
@@ -63,7 +63,7 @@ const ProductListing = () => {
     const queryParams = new URLSearchParams();
     if (category) queryParams.set("category", category);
     if (searchTerm) queryParams.set("search", searchTerm);
-    history.push({ search: queryParams.toString() });
+    navigate({ search: queryParams.toString() });
   };
 
   // Handle search input change
@@ -74,7 +74,7 @@ const ProductListing = () => {
     const queryParams = new URLSearchParams();
     if (selectedCategory) queryParams.set("category", selectedCategory);
     if (searchValue) queryParams.set("search", searchValue);
-    history.push({ search: queryParams.toString() });
+    navigate({ search: queryParams.toString() });
   };
 
   return (
